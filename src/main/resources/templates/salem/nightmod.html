@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Salem Night Modulator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url('../../static/salem/background.jpg');
+        }
+        img:hover {
+            cursor: pointer;
+        }
+        #app {
+            height: 100vh;
+        }
+        .gameplay-card-natural {
+            transform: scale(1);
+            filter: blur(0px);
+            transition: all 0.25s ease;
+        }
+        .gameplay-card-active {
+            transform: scale(1.125);
+            filter: blur(0px);
+            transition: all 0.25s ease;
+        }
+        .gameplay-card-blur {
+            transform: scale(0.95);
+            filter: blur(4px);
+            transition: all 0.25s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" th:style="'background-image: url(' + @{/salem/background.jpg} + '); '">
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-sm-4 col-sm-4 p-4 d-flex justify-content-center" v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isFirstNight, 'gameplay-card-blur': (!isFirstNight && isAudioPlaying)}">
+                    <img @click="playAudioPlayer('firstnight')" th:src="@{/salem/blackcat-card.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                </div>
+                <div class="col-sm-4 col-sm-4 p-4 d-flex justify-content-center"  v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isFullRole, 'gameplay-card-blur': (!isFullRole && isAudioPlaying)}">
+                    <img @click="playAudioPlayer('full-role')" th:src="@{/salem/constable-card.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                </div>
+                <div class="col-sm-4 col-sm-4 p-4 d-flex justify-content-center"  v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isConstableKilled, 'gameplay-card-blur': (!isConstableKilled && isAudioPlaying)}">
+                    <img @click="playAudioPlayer('no-constable')" th:src="@{/salem/constable-card-cross.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div hidden="hidden">
+        <audio controls id="audio-nightmod-firstnight">
+<!--            <source src="/salem/audio/nightModulatorTemplateFirstNight" type="audio/mp3">-->
+            อุปกรณ์ไม่รองรับการเล่นเสียง
+        </audio>
+        <audio controls id="audio-nightmod-full">
+<!--            <source src="/salem/audio/nightModulatorTemplateFull" type="audio/mp3">-->
+            อุปกรณ์ไม่รองรับการเล่นเสียง
+        </audio>
+        <audio controls id="audio-nightmod-no-constable">
+<!--            <source src="/salem/audio/nightModulatorTemplateNoConstable" type="audio/mp3">-->
+            อุปกรณ์ไม่รองรับการเล่นเสียง
+        </audio>
+    </div>
+    <script th:src="@{/salem/js/nightmod.js}" type="module"></script>
+</body>
+</html>
