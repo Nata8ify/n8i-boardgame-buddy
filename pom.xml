@@ -56,6 +56,42 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <from>
+                        <image>amazoncorretto:17.0.9</image>
+                        <auth>
+                            <username>${env.HUB_USERNAME}</username>
+                            <password>${env.HUB_PASSWORD}</password>
+                        </auth>
+                        <platforms>
+                            <platform>
+                                <architecture>arm64</architecture>
+                                <os>linux</os>
+                            </platform>
+<!--                            <platform>-->
+<!--                                <architecture>amd64</architecture>-->
+<!--                                <os>linux</os>-->
+<!--                            </platform>-->
+                        </platforms>
+                    </from>
+                    <to>
+                        <image>registry.hub.docker.com/nata8ify/boardgame-buddy</image>
+                        <auth>
+                            <username>${env.HUB_USERNAME}</username>
+                            <password>${env.HUB_PASSWORD}</password>
+                        </auth>
+                    </to>
+                    <container>
+                        <ports>
+                            <port>8080</port>
+                        </ports>
+                    </container>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
