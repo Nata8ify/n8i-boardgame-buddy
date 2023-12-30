@@ -8,6 +8,12 @@ let constableKilledAudioPlayerEl = document.getElementById("audio-nightmod-no-co
 firstNightAudioPlayerEl.addEventListener('ended', () => {
     app.stopAudioPlayer()
 }, false)
+initiatedAudioPlayerEl.addEventListener('ended', () => {
+    app.stopAudioPlayer()
+}, false)
+constableKilledAudioPlayerEl.addEventListener('ended', () => {
+    app.stopAudioPlayer()
+}, false)
 
 let app = createApp({
     data(){
