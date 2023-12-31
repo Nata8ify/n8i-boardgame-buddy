@@ -12,30 +12,27 @@
         }
         #app {
             /*height: 100vh;*/
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
+            background-repeat: repeat;
         }
         .gameplay-card-natural {
             transform: scale(1);
             filter: blur(0px);
-            transition: all 0.25s ease;
+            transition: all 0.35s ease;
         }
         .gameplay-card-active {
-            transform: scale(1.125);
+            transform: scale(1.225);
             filter: blur(0px);
-            transition: all 0.25s ease;
+            transition: all 0.35s ease;
         }
         .gameplay-card-blur {
             transform: scale(0.95);
             filter: blur(4px);
-            transition: all 0.25s ease;
+            transition: all 0.35s ease;
         }
     </style>
 </head>
 <body>
-    <div id="app" th:style="'background-image: url(' + @{/salem/background.jpg} + '); '">
+    <div id="app" th:style="'background-image: url(' + @{/salem/background.png} + '); '">
         <div class="container-fluid pt-4" >
             <div class="row">
                 <div class="col-sm-12 col-md-4 p-4 d-flex justify-content-center" v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isFirstNight, 'gameplay-card-blur': (!isFirstNight && isAudioPlaying)}">
