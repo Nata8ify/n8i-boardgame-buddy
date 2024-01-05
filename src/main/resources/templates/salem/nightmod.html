@@ -36,13 +36,13 @@
         <div class="container-fluid pt-4" >
             <div class="row">
                 <div class="col-sm-12 col-md-4 p-4 d-flex justify-content-center" v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isFirstNight, 'gameplay-card-blur': (!isFirstNight && isAudioPlaying)}">
-                    <img @click="playAudioPlayer('firstnight')" th:src="@{/salem/blackcat-card.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                    <img @click="playAudioPlayer('firstnight')" width="200px" th:src="@{/salem/firstnight.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
                 </div>
                 <div class="col-sm-12 col-md-4 p-4 d-flex justify-content-center"  v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isFullRole, 'gameplay-card-blur': (!isFullRole && isAudioPlaying)}">
-                    <img @click="playAudioPlayer('full-role')" th:src="@{/salem/constable-card.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                    <img @click="playAudioPlayer('full-role')" width="200px" th:src="@{/salem/night.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
                 </div>
                 <div class="col-sm-12 col-md-4 p-4 d-flex justify-content-center"  v-bind:class="{'gameplay-card-natural': isInitiated, 'gameplay-card-active': isConstableKilled, 'gameplay-card-blur': (!isConstableKilled && isAudioPlaying)}">
-                    <img @click="playAudioPlayer('no-constable')" th:src="@{/salem/constable-card-cross.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
+                    <img @click="playAudioPlayer('no-constable')" width="200px" th:src="@{/salem/night_noconstable.png}" alt="constable-card-display" class="img img-thumbnail gameplay-card-natural" >
                 </div>
             </div>
         </div>
