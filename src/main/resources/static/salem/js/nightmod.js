@@ -1,3 +1,4 @@
+/*<![CDATA[*/
 import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 // import { createApp } from 'https://unpkg.com/petite-vue?module'
 
@@ -24,7 +25,9 @@ let app = createApp({
             isFullRole: false,
             isConstableKilled: false,
 
-            isAudioPlaying: false
+            isAudioPlaying: false,
+
+            activeBackgroundImage: null
         }
     },
     methods: {
@@ -47,6 +50,7 @@ let app = createApp({
             if (this.isAudioPlaying) {
                 console.log(`Audio is Playing... Halted`)
                 this.stopAudioPlayer()
+                this.loadActiveBackgroundImage(null)
                 return;
             }
             console.log(`Play audio mode [${mode}]`)
@@ -76,7 +80,27 @@ let app = createApp({
                     this.isInitiated = true
                     break;
             }
+            this.loadActiveBackgroundImage(mode)
             this.isAudioPlaying = true
+        },
+
+        loadActiveBackgroundImage(mode) {
+            if (mode === null) {
+                this.activeBackgroundImage = null
+                return
+            }
+            switch (mode) {
+                case 'firstnight':
+                    this.activeBackgroundImage = '/salem/firstnight.png'
+                    return
+                case 'full-role':
+                    this.activeBackgroundImage = '/salem/night.png'
+                    return
+                case 'no-constable':
+                    this.activeBackgroundImage = '/salem/night_noconstable.png'
+                    return
+            }
         }
     }
 }).mount("#app")
+/*]]>*/
